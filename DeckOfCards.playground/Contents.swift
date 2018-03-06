@@ -59,6 +59,7 @@ class Deck {
             
             self.cards.remove(at: rand)
             }
+            self.cards = shuffled
         
     }
 }
@@ -89,3 +90,16 @@ class Player {
         return count
     }
 }
+
+var deck = Deck()
+print(deck.cards)
+
+var player = Player(name: "Bob")
+print(player.name)
+
+deck.shuffle()
+print(deck.cards)
+
+var card = player.draw(deck: deck)
+print(card)
+print(player.hand)
