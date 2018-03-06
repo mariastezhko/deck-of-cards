@@ -22,21 +22,21 @@ struct Card {
 class Deck {
     var cards = [Card]()
     init() {
-        for i in 0...10 {
-            var newCard = Card(color: "Blue")
+        for _ in 0..<10 {
+            let newCard = Card(color: "Blue")
             self.cards.append(newCard)
         }
-        for i in 0...10 {
-            var newCard = Card(color: "Red")
+        for _ in 0..<10 {
+            let newCard = Card(color: "Red")
             self.cards.append(newCard)
         }
-        for i in 0...10 {
-            var newCard = Card(color: "Green")
+        for _ in 0..<10 {
+            let newCard = Card(color: "Green")
             self.cards.append(newCard)
         }
     }
     func deal() -> Card {
-        var popped = self.cards.remove(at: 0)
+        let popped = self.cards.remove(at: 0)
         return popped
     }
     func isEmpty() -> Bool {
@@ -51,7 +51,7 @@ class Deck {
             let c = self.cards.count
             guard c > 1 else { return }
             var shuffled = [Card]();
-            for i in 0..<self.cards.count
+            for _ in 0..<self.cards.count
             {
             let rand = Int(arc4random_uniform(UInt32(self.cards.count)))
             
@@ -71,7 +71,7 @@ class Player {
         self.name = name
     }
     func draw(deck: Deck) -> Card {
-        var card = deck.deal()
+        let card = deck.deal()
         self.hand.append(card)
         return card
     }
@@ -81,7 +81,7 @@ class Player {
     }
     func matchingCards(color: String, roll: Int) -> Int {
         var count = 0
-        for i in 0..<self.hand.count {
+        for _ in 0..<self.hand.count {
             let card = self.hand.remove(at: 0)
             if card.color == color && card.roll == roll {
                 count += 1
